@@ -2,8 +2,8 @@
 
 echo "Download repo"
 
-git clone https://github.com/ManuelCoral1998/Ramp-Up.git
+git clone https://github.com/ManuelCoral1998/FrontEnd-DRU.git
 
-npm install ./Ramp-Up/movie-analyst-ui/
+npm install ./FrontEnd-DRU/movie-analyst-ui/
 
-node ./Ramp-Up/movie-analyst-ui/server.js
+node ./FrontEnd-DRU/movie-analyst-ui/server.js
