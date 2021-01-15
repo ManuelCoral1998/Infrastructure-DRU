@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/bash
 
 echo "=========== UPDATING ============="
 sudo apt update
@@ -25,4 +25,16 @@ if npm --version 2>&1 >/dev/null ; then
     echo "Already install"
 else
     sudo apt-get install -y npm
+fi
+
+echo "=========== EXECUTING OTHER SCRIPTS ============"
+
+if [ "$HOSTNAME" = Front ]; then
+    echo "Front installation"
+    sh ./front_installations.sh
+elif [ "$HOSTNAME" == Api ]; then
+    echo "Back installation"
+    sh ./back_installations.sh
+else
+    echo "Running in a single machine"
 fi
