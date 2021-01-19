@@ -1,0 +1,29 @@
+$set_environment_variables = <<SCRIPT
+tee "/etc/profile.d/myvars.sh" > "/dev/null" <<EOF
+# environment variables.
+export DB_HOST=localhost
+export DB_USER=applicationuser
+export DB_PASS=applicationuser
+export DB_NAME=movie_db
+export BACK_HOST=localhost
+EOF
+SCRIPT
+
+Vagrant.configure("2") do |config|
+    config.vm.define "App" do |cfg|
+        cfg.vm.provider :virtualbox do |vb, override| 
+          config.vm.box = "ubuntu/bionic64"
+          override.vm.network "private_network", ip: "192.168.56.3"
+          override.vm.hostname = "App"
+          vb.name = "App"
+          vb.cpus = 1
+          vb.memory = 2048
+          config.vm.provision :shell, inline: $set_environment_variables, :run => 'always'
+          config.vm.provision "file", source:"../../installation-scripts/single-machine/basic_installations.sh", destination: "./complete_installations.sh"
+          config.vm.provision "file", source:"../../installation-scripts/single-machine/front_installation.sh", destination: "./front_installations.sh"
+          config.vm.provision "file", source:"../../installation-scripts/single-machine/back_installation.sh", destination: "./back_installations.sh"
+          config.vm.provision "file", source:"../../installation-scripts/single-machine/mysql_install.sh", destination: "./mysql_install.sh"
+          config.vm.provision "file", source:"../../installation-scripts/single-machine/create_schema_user.sql", destination: "./create_schema_user.sql"
+        end
+   end
+end
