@@ -27,9 +27,15 @@ else
     sudo apt-get install -y npm
 fi
 
-#echo "============ INSTALL MYSQL ============"
+echo "============ INSTALL MYSQL ============"
 
-#sudo apt-get install -y mysql-server
+if [ "$HOSTNAME" == Api ]; then 
+    echo "Installing mysql server"
+    sudo apt-get install -y mysql-server
+else 
+    echo "Installing mysql client"
+    sudo apt-get install -y mysql-client
+fi
 
 echo "=========== EXECUTING OTHER SCRIPTS ============"
 
