@@ -27,9 +27,9 @@ else
     sudo apt-get install -y npm
 fi
 
-echo "============ INSTALL MYSQL ============"
+#echo "============ INSTALL MYSQL ============"
 
-sudo apt-get install -y mysql-server
+#sudo apt-get install -y mysql-server
 
 echo "=========== EXECUTING OTHER SCRIPTS ============"
 
