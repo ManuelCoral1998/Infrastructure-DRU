@@ -6,4 +6,4 @@
 
 echo "Populating DB"
 
-mysql -u $DB_USER -p$DB_PASS -h $DB_HOST -P $PORT < ./BackEnd-DRU/movie-analyst-api/data_model/table_creation_and_inserts.sql 
+mysql -u $DB_USER -p$DB_PASS -h $DB_HOST -P $DB_PORT < ./BackEnd-DRU/movie-analyst-api/data_model/table_creation_and_inserts.sql 
