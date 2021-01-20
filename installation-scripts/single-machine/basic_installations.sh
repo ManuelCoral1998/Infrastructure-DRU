@@ -35,11 +35,11 @@ echo "=========== EXECUTING OTHER SCRIPTS ============"
 
 if [ "$HOSTNAME" = Front ]; then
     echo "Front installation"
-    sh ./front_installations.sh
+    sh ./front_installation.sh
 elif [ "$HOSTNAME" == Api ]; then
     echo "Back installation"
-    sh ./back_installations.sh
+    sh ./back_installation.sh
 else
-    sh ./front_installations.sh
-    sh ./back_installations.sh
+    sh ./front_installation.sh
+    sh ./back_installation.sh
 fi
