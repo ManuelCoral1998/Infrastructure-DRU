@@ -2,12 +2,19 @@
 
 echo "Installing MySQL"
 
-sudo apt-get install -y mysql-server
+echo "Installing mysql client"
 
-echo "Creating schema and user"
+sudo apt-get install -y mysql-client
+# sudo apt-get install -y mysql-server
 
-sudo mysql < ./create_schema_user.sql
+# echo "Creating schema and user"
+
+# sudo mysql < ./create_schema_user.sql
+
+# echo "Populating DB"
+
+# sudo mysql movie_db < ./BackEnd-DRU/movie-analyst-api/data_model/table_creation_and_inserts.sql 
 
 echo "Populating DB"
 
-sudo mysql movie_db < ./BackEnd-DRU/movie-analyst-api/data_model/table_creation_and_inserts.sql 
+mysql -u $DB_USER -p$DB_PASS -h $DB_HOST -P $DB_PORT < ./BackEnd-DRU/movie-analyst-api/data_model/table_creation_and_inserts.sql 
