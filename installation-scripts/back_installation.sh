@@ -8,8 +8,12 @@ sh ./mysql_install.sh
 
 echo "Install dependencies"
 
-npm install ./BackEnd-DRU/movie-analyst-api/
+cd BackEnd-DRU
+
+sudo npm install ./movie-analyst-api/ .
 
 echo "Execute server.js"
 
-node ./BackEnd-DRU/movie-analyst-api/server.js
+sudo node ./movie-analyst-api/server.js 2> /dev/null &
+
+cd ..
